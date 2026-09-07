@@ -51,6 +51,21 @@ function tableSheet(name, title, content) {
 
 tableSheet('Facturas', `facturas · IRP ${data.perfil.ejercicio}`, rows);
 tableSheet('Pendientes', 'pendientes de revisión', rows.filter(r => r[7] === 'revisar'));
+const loadFields = ['id', 'ruc_emisor', 'ruc_destinatario', 'fecha', 'tipo', 'origen',
+  'timbrado', 'numero', 'cdc', 'moneda', 'condicion', 'total_gs', 'gravado_10_gs',
+  'gravado_5_gs', 'exento_gs', 'imputaciones'];
+const load = wb.worksheets.add('Carga');
+load.getRange('A1:P1').values = [loadFields];
+if (data.documentos.length) {
+  load.getRange(`A2:P${data.documentos.length + 1}`).values = data.documentos.map(d =>
+    loadFields.map(k => safe(k === 'imputaciones' && Array.isArray(d[k]) ?
+      [...d[k]].sort().join(',') : d[k] ?? null)));
+}
+load.getRange(`A1:P${Math.max(2, data.documentos.length + 1)}`).format.columnWidth = 22;
+load.getRange('A1:P1').format.fill = '#D9E8EA';
+load.getRange('A1:P1').format.font = {bold: true};
+load.getRange(`L2:O${Math.max(2, data.documentos.length + 1)}`).setNumberFormat('#,##0');
+load.freezePanes.freezeRows(1);
 const summary = wb.worksheets.add('Resumen');
 summary.showGridLines = false;
 summary.getRange('A1:B2').merge();
@@ -85,7 +100,7 @@ await fs.mkdir(path.dirname(path.resolve(output)), {recursive: true});
 const audit = await wb.inspect({kind: 'match', searchTerm: '#REF!|#DIV/0!|#VALUE!|#NAME\\?|#NUM!',
   options: {useRegex: true, maxResults: 100}});
 await fs.writeFile(`${output}.verificacion.json`, JSON.stringify(audit, null, 2));
-for (const [name, range] of [['Facturas', 'A1:H10'], ['Pendientes', 'A1:H10'], ['Resumen', 'A1:B17']]) {
+for (const [name, range] of [['Facturas', 'A1:H10'], ['Pendientes', 'A1:H10'], ['Carga', 'A1:H6'], ['Resumen', 'A1:B17']]) {
   const preview = await wb.render({sheetName: name, range, scale: 1, format: 'png'});
   await fs.writeFile(`${output}.${name}.png`, new Uint8Array(await preview.arrayBuffer()));
 }

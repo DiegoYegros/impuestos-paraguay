@@ -84,7 +84,9 @@ def build(data):
         components[root(i)].append(i)
     duplicates, conflicts = set(), set()
     compare = ('total_gs', 'fecha', 'moneda', 'concepto', 'pagos', 'decision',
-               'candidato_gs', 'iva_credito_gs', 'otro_impuesto_gs', 'controles')
+               'candidato_gs', 'iva_credito_gs', 'otro_impuesto_gs', 'controles',
+               'ruc_emisor', 'ruc_destinatario', 'numero', 'timbrado', 'origen',
+               'condicion', 'pais', 'gravado_10_gs', 'gravado_5_gs', 'exento_gs', 'imputaciones')
     for indices in components.values():
         if len(indices) < 2:
             continue

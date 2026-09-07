@@ -5,6 +5,9 @@ Comprobá la interfaz actual y la guía oficial antes de actuar
 
 ## acceso y preparación
 
+Usá el [flujo de validación](validacion.md) antes y después de la carga
+Un lote en revisión no se envía al portal
+
 Entrá desde [DNIT](https://www.dnit.gov.py) → Sistema Marangatu
 Usá una sesión autorizada; si falta, pedile al usuario que ingrese y resuelva cualquier verificación
 Confirmá titular, ejercicio y obligaciones activas del RUC
@@ -41,6 +44,7 @@ Verificá si corresponde 955 mensual o 956 anual según las obligaciones del RUC
 ## conciliación y presentación
 
 Esperá el procesamiento, leé rechazos y corregí sólo esas filas
+Descargá un reporte nuevo y ejecutá `conciliar_lote` antes de confirmar la presentación
 Antes de reintentar, consultá qué aceptó el sistema para no duplicarlo
 Compará cantidades e importes con el reporte descargado, incluyendo partidas no imputadas y ajustes
 Resolvé las diferencias antes de presentar

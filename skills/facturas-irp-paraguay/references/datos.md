@@ -69,7 +69,7 @@ Ejecutá con el Node de ese runtime
 NODE /ruta/temporal/planilla.mjs /ruta/lote/salida/libro.json /ruta/lote/salida/facturas-irp.xlsx
 ```
 
-El generador produce Facturas, Pendientes, Resumen y previsualizaciones PNG para revisar
+El generador produce Facturas, Pendientes, Carga, Resumen y previsualizaciones PNG para revisar
 Comprobá `verificacion.json`, que las fórmulas no tengan errores y el subtotal coincida con JSON
 Mirá las vistas y ajustá los anchos si el texto se corta
 Entregá la planilla y un mensaje breve, conservando JSON/CSV como respaldo
@@ -82,3 +82,5 @@ Guardá el histórico de ajustes y el estado real de carga en un manifiesto loca
 `ya_registrado` cambia la ruta de carga, no elimina una deducción del libro anual
 Si dos copias tienen datos contradictorios, ambas quedan para revisión; resolvé desde originales y conservá la explicación
 Un CSV interno no cumple el esquema de importación de Marangatu
+
+Para cargar al portal, completá el [flujo de validación](validacion.md), con la segunda lectura, los campos de Carga y los reportes previo y posterior

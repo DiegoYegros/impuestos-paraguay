@@ -22,3 +22,5 @@ salida/
 *.tiff
 *.zip
 *.log
+.venv/
+*.html

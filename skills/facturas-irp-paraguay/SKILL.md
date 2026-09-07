@@ -37,10 +37,15 @@ El generador deja créditos, ajustes, monedas extranjeras y categorías especial
 
 ## cargar en Marangatu
 
+Seguí [validacion.md](references/validacion.md) para validar antes de cargar y conciliar después
+Las dudas van a `revision.html` con su motivo y original; bloquean la carga hasta resolverlas
+No uses una planilla modificada después de validarla
+
 Cuando el encargo incluya la carga, seguí [marangatu.md](references/marangatu.md)
 Conciliá primero con los registros del portal
 Recuperá electrónicos y virtuales desde Marangatu; excluilos de la importación de preimpresos
 Para presentar o pagar, la autorización debe cubrir esa acción y el borrador concreto
+Comprobá las facturas con un reporte nuevo del portal y cerrá el lote sólo cuando `conciliado` sea verdadero
 
 ## datos privados
 
