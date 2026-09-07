@@ -1,0 +1,4 @@
+interface:
+  display_name: "Facturas e IRP Paraguay"
+  short_description: "De fotos de facturas a planilla y carga en Marangatu"
+  default_prompt: "Usá $facturas-irp-paraguay para procesar estas facturas, revisar qué corresponde deducir y armarme la planilla del IRP"
